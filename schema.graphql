@@ -1,0 +1,10 @@
+type Query  {
+   test: String
+}
+
+customerById (id: ID!): Customer
+  @dbquery (
+    type: "mssql",
+    query: "SELECT id, full_name AS name, email FROM customer WHERE id = ? AND creditCard is not NULL",
+    configuration: "mssql_config"
+  )
